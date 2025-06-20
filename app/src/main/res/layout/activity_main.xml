@@ -86,6 +86,19 @@
         android:background="#FF660e"
         />
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/goLoginPage"
+        android:layout_below="@id/signupButton"
+        android:layout_width="200dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="20dp"
+        android:layout_margin="40dp"
+        android:text="Go to login"
+        android:textColor="@color/white"
+        android:background="#FF660e"
+        />
+
+
 
 
 

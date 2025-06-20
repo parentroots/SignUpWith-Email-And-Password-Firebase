@@ -1,6 +1,8 @@
 package com.example.firebasesignupandlogin;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -20,7 +22,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity {
 
-    private AppCompatButton signUpButton;
+    private AppCompatButton signUpButton,goLoginPage;
     private TextInputEditText edUserName,edEmail,edPassword;
 
     private FirebaseAuth auth;
@@ -39,6 +41,8 @@ public class MainActivity extends AppCompatActivity {
         edUserName=findViewById(R.id.edUserName);
         edEmail=findViewById(R.id.edEmail);
         edPassword=findViewById(R.id.edPassword);
+        goLoginPage=findViewById(R.id.goLoginPage);
+
 
         auth=FirebaseAuth.getInstance();
         firebaseDatabase=FirebaseDatabase.getInstance();
@@ -46,6 +50,14 @@ public class MainActivity extends AppCompatActivity {
 
 
 firebaseSignUpWithEmailAndPassword();
+
+goLoginPage.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        Intent intent=new Intent(MainActivity.this, SignInActivity.class);
+        startActivity(intent);
+    }
+});
 
 
     }
@@ -71,7 +83,11 @@ firebaseSignUpWithEmailAndPassword();
                     if (task.isSuccessful()){
 
                         Toast.makeText(MainActivity.this, "User Create SuccessFull", Toast.LENGTH_SHORT).show();
-                    finish();
+
+                        Intent intent=new Intent(MainActivity.this, SignInActivity.class);
+                        startActivity(intent);
+
+
                     }else {
 
                         Toast.makeText(MainActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
