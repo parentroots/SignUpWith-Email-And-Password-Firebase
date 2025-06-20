@@ -18,6 +18,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class SignInActivity extends AppCompatActivity {
 
@@ -25,6 +26,7 @@ public class SignInActivity extends AppCompatActivity {
 
     FirebaseAuth auth;
     AppCompatButton signInBtn;
+    FirebaseDatabase firebaseDatabase;
 
 
     @Override
@@ -41,6 +43,7 @@ public class SignInActivity extends AppCompatActivity {
 
         variableFinder();
         auth=FirebaseAuth.getInstance();
+        firebaseDatabase=FirebaseDatabase.getInstance();
 
 
         signInBtn.setOnClickListener(v -> {
